@@ -8,9 +8,8 @@ import java.lang.reflect.Proxy;
 public class DynamicProxyDemo {
 
     public static void main(String[] args) {
-        Subject realSubject = new RealSubject();
-        MyInvocationHandler myInvocationHandler = new MyInvocationHandler(realSubject);
-        Subject proxy = (Subject)Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(), new Class[]{Subject.class}, myInvocationHandler);
+        ProxySubject proxySubject = new ProxySubject();
+        Subject proxy = proxySubject.bind();
         proxy.sellBooks();
         proxy.speak();
     }

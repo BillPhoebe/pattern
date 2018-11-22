@@ -2,13 +2,16 @@ package yyd.phoebe.struct.proxy.dynamicproxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
-public class MyInvocationHandler implements InvocationHandler {
+public class ProxySubject implements InvocationHandler {
 
     private Subject realSubject;
 
-    public MyInvocationHandler(Subject realSubject){
-        this.realSubject=realSubject;
+    public Subject bind(){
+        this.realSubject=new RealSubject();
+        return (Subject)Proxy.newProxyInstance(realSubject.getClass().getClassLoader(),
+                realSubject.getClass().getInterfaces(), this);
     }
 
     @Override
