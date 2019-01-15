@@ -6,13 +6,13 @@ package yyd.phoebe.web.mvc;
  */
 public class MVCPatternDemo {
     public static void main(String[] args) {
-        Student student = retriveStudentFromDatabase();
+        Student student = retrieveStudentFromDatabase();
         StudentController studentController = new StudentController(student, new StudentView());
         studentController.updateView();
         student.setName("Phoebe");
         studentController.updateView();
     }
-    private static Student retriveStudentFromDatabase(){
+    private static Student retrieveStudentFromDatabase(){
         Student student = new Student();
         student.setName("Robert");
         student.setRollNo("10");
